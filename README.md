@@ -1,5 +1,7 @@
 # ai-planet-assignment
 
+Access the code here: https://www.kaggle.com/code/rajveerrathod/falcon7b
+
 ## Introduction
 
 This repository contains code for fine-tuning a language model using the `BitsAndBytes` library. The goal is to generate informative responses to user queries related to marine toxins, medical queries, and other relevant topics.
