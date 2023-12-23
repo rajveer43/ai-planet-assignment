@@ -101,6 +101,7 @@ The following hyperparameters were used during training:
 ```
 
 ### Additional Information
-The `generate_promp`t function creates conversation prompts in the format "<human>: [question]\n<assistant>: [answer]".
-The model is fine-tuned using the `transformers library`, with specific configurations for `BitsAndBytes` quantization and `Peft` training.
-The fine-tuned model can be pushed to the Hugging Face Model Hub for easy sharing and access.
+
+- The `generate_promp`t function creates conversation prompts in the format "<human>: [question]\n<assistant>: [answer]".
+- The model is fine-tuned using the `transformers library`, with specific configurations for `BitsAndBytes` quantization and `Peft` training.
+- The fine-tuned model can be pushed to the Hugging Face Model Hub for easy sharing and access.
