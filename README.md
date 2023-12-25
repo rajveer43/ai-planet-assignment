@@ -41,41 +41,57 @@ The pre-trained model used for fine-tuning is "tiiuae/falcon-7b-instruct". The f
 ```bash
 PeftModelForCausalLM(
   (base_model): LoraModel(
-    (model): FalconForCausalLM(
-      (transformer): FalconModel(
-        (word_embeddings): Embedding(65024, 4544)
-        (h): ModuleList(
-          (0-31): 32 x FalconDecoderLayer(
-            (self_attention): FalconAttention(
-              (maybe_rotary): FalconRotaryEmbedding()
-              (query_key_value): Linear4bit(
-                in_features=4544, out_features=4672, bias=False
+    (model): LlamaForCausalLM(
+      (model): LlamaModel(
+        (embed_tokens): Embedding(49216, 3072, padding_idx=0)
+        (layers): ModuleList(
+          (0-23): 24 x LlamaDecoderLayer(
+            (self_attn): LlamaAttention(
+              (q_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=3072, out_features=3072, bias=False)
                 (lora_dropout): ModuleDict(
                   (default): Dropout(p=0.05, inplace=False)
                 )
                 (lora_A): ModuleDict(
-                  (default): Linear(in_features=4544, out_features=16, bias=False)
+                  (default): Linear(in_features=3072, out_features=16, bias=False)
                 )
                 (lora_B): ModuleDict(
-                  (default): Linear(in_features=16, out_features=4672, bias=False)
+                  (default): Linear(in_features=16, out_features=3072, bias=False)
                 )
                 (lora_embedding_A): ParameterDict()
                 (lora_embedding_B): ParameterDict()
               )
-              (dense): Linear4bit(in_features=4544, out_features=4544, bias=False)
-              (attention_dropout): Dropout(p=0.0, inplace=False)
+              (k_proj): Linear4bit(in_features=3072, out_features=3072, bias=False)
+              (v_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=3072, out_features=3072, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.05, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=3072, out_features=16, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=16, out_features=3072, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (o_proj): Linear4bit(in_features=3072, out_features=3072, bias=False)
+              (rotary_emb): LlamaRotaryEmbedding()
             )
-            (mlp): FalconMLP(
-              (dense_h_to_4h): Linear4bit(in_features=4544, out_features=18176, bias=False)
-              (act): GELU(approximate='none')
-              (dense_4h_to_h): Linear4bit(in_features=18176, out_features=4544, bias=False)
+            (mlp): LlamaMLP(
+              (gate_proj): Linear4bit(in_features=3072, out_features=8192, bias=False)
+              (up_proj): Linear4bit(in_features=3072, out_features=8192, bias=False)
+              (down_proj): Linear4bit(in_features=8192, out_features=3072, bias=False)
+              (act_fn): SiLU()
             )
-            (input_layernorm): LayerNorm((4544,), eps=1e-05, elementwise_affine=True)
+            (input_layernorm): LlamaRMSNorm()
+            (post_attention_layernorm): LlamaRMSNorm()
           )
         )
-        (ln_f): LayerNorm((4544,), eps=1e-05, elementwise_affine=True)
+        (norm): LlamaRMSNorm()
       )
-      (lm_head): Linear(in_features=4544, out_features=65024, bias=False)
+      (lm_head): Linear(in_features=3072, out_features=49216, bias=False)
     )
   )
 )
