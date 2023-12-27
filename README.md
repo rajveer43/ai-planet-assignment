@@ -127,4 +127,17 @@ The following hyperparameters were used during training:
 
 ### scree shots
 
+## output 1 
+
+<!--load an image-->
+![output](images/output1.png)
+
+## output 2
+
+![output2](images/output2.png)
+
+## outout 3
+
+![output](images/model1.png)
+
 
